@@ -1,0 +1,48 @@
+<div class="text-center py-5 bg-info">
+    <h1>Crawler app</h1>
+    <h2>insert url and depth to crawler</h2>
+
+</div>
+<div class="p-5 d-flex justify-content-center text-start">
+
+    <form class="form-horizontal" [formGroup]="form">
+        <div class="d-flex">
+            <div class="form-group mx-2">
+                <div class="col-sm-12">
+                    <label for="url" class="control-label">url</label>
+                    <input type="search" placeholder="search" id="url" class="form-control" formControlName="url">
+                </div>
+            </div>
+            <div class="form-group mx-2">
+                <div class="col-sm-12">
+                    <label for="depth" class="control-label">depth</label>
+                    <input id="depth" class="form-control" formControlName="depth">
+                </div>
+            </div>
+            <div class="mx-5">
+                <button (click)="submit()" class="btn bg-info text-dark mt-4 mr-3" [disabled]="!form.valid">
+                    ok
+                </button>
+                <button (click)="refresh()" class="btn bg-info text-dark mt-4" [disabled]="!form.valid">
+                    reset
+                </button>
+            </div>
+        </div>
+
+    </form>
+
+</div>
+<div class="d-flex  justify-content-center text-center mt-5 px-5" *ngIf="urls">
+    <table class="table table-bordered w-75">
+        <tr>
+            <th class="py-2"></th>
+            <th class="py-2">url</th>
+        </tr>
+        <tr *ngFor="let url of urls;  let i = index">
+            <td class="py-2">{{i}}</td>
+            <td class="py-2">{{url.url}}</td>
+
+        </tr>
+    </table>
+
+</div>
