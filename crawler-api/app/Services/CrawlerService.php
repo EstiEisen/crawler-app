@@ -31,7 +31,7 @@ use Symfony\Component\HttpFoundation\Response;
         $this->checkStatusUrl($url);
 
         if ($this->statusCode !== Response::HTTP_OK) {
-            throw new \Exception($this->statusCode);  
+            throw new Exception($this->statusCode);  
               }
         
         if($this->checkBaseUrlExist())
@@ -67,18 +67,13 @@ use Symfony\Component\HttpFoundation\Response;
     private function crawlPage($url, $depth)
     {
         try{
-            
-       
-        $this->checkStatusUrl($url) ;    
+            $this->checkStatusUrl($url) ;    
         if ($this->statusCode === Response::HTTP_OK) {
-
             $html = (string)$this->response->getBody();
             if(!Page::where('url',$url)->where('base_url_id',$this->baseUrl->id)->exists()) {
             $pageModel = $this->savePage( $url);
             $this->baseUrl->pages()->save($pageModel);
-            }
-         
-       
+            }  
  } 
 }
  catch (\Exception $e) {
