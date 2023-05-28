@@ -22,4 +22,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::prefix('crawler')->group(function () {
     Route::post('/',[ CrawlController::class, 'crawl']);
 });
-// Route::post('crawl', 'App\Http\Controllers\CrawlerController@crawl');
+
